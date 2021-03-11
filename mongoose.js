@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 const Item = require("./models/item");
 const url =
-  "mongodb+srv://admin:5plMy0NOsm9xtVS0@cluster0.iszw0.mongodb.net/hevdb?retryWrites=true&w=majority";
+  "mongodb+srv://hev:hevpassword@cluster0.iszw0.mongodb.net/hevdb?retryWrites=true&w=majority";
 
 mongoose
-  .connect(url)
+
+  .connect(url, { useNewUrlParser: true }, { useUnifiedTopology: true })
   .then(() => {
     console.log("connected");
   })
@@ -22,9 +23,15 @@ const createItem = async (req, res) => {
     pkgSize: req.body.pkgSize,
     id: req.body.id,
   });
-  const result = await createItem.save();
+  const result = await createdItem.save();
 
   res.json(result);
 };
 
+const getItems = async (req, res) => {
+  const items = await Item.find().exec();
+  res.send(items);
+}
+
 exports.createItem = createItem;
+exports.getItems = getItems;

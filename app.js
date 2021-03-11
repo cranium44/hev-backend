@@ -1,13 +1,20 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const mongooseApp = require('./mongoose');
+
 const app = express();
-const mongooseApp = require('./mongoose')
+app.use(bodyParser.json());
+
 const port = 3000
 
 app.get('/', (req, res) => {
     res.send("Hello backend");
 });
 
-app.post('/item', mongooseApp.createItem)
+app.get('/items', mongooseApp.getItems);
+
+app.post('/item', mongooseApp.createItem);
+
 
 
 app.listen(port, () => {
