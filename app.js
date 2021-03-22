@@ -5,10 +5,35 @@ const mongooseApp = require('./mongoose');
 const app = express();
 app.use(bodyParser.json());
 
-const port = 3000
+const port = 5000
 
 app.get('/', (req, res) => {
     res.send("Hello backend");
+});
+
+app.get('/test', (req, res) => {
+    res.send([
+        {
+            id: 1,
+            name: "item 1"
+        },
+        {
+            id: 2,
+            name: "item 2"
+        },
+        {
+            id: 3,
+            name: "item 3"
+        },
+        {
+            id: 4,
+            name: "item 4"
+        }
+    ])
+});
+
+app.post('/test', (req, res) => {
+    res.send(req.body)
 });
 
 app.get('/items', mongooseApp.getItems);
@@ -18,5 +43,5 @@ app.post('/item', mongooseApp.createItem);
 
 
 app.listen(port, () => {
-    console.log(`Server started on port`);
+    console.log(`Server started on port ${port}`);
 });

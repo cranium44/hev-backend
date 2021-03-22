@@ -10,16 +10,14 @@ mongoose
     console.log("connected");
   })
   .catch((err) => {
-    console.log("====================================");
     console.log("Error");
-    console.log("====================================");
   });
 
 const createItem = async (req, res) => {
   const createdItem = new Item({
     name: req.body.name,
     price: req.body.price,
-    description: req.body.desc,
+    brand: req.body.brand,
     pkgSize: req.body.pkgSize,
     id: req.body.id,
   });
