@@ -4,7 +4,7 @@ const itemSchema = new mongoose.Schema({
     id: {type: Number, required: true},
     name: {type: String, required: true},
     price: {type: Number, required: true},
-    desc: {type: String},
+    brand: {type: String},
     pkgSize: {type: String},
 })
 
