@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Item = require("./models/item");
+const Item = require("../models/item");
 const url =
   "mongodb+srv://hev:hevpassword@cluster0.iszw0.mongodb.net/hevdb?retryWrites=true&w=majority";
 
