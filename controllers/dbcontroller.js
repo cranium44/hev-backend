@@ -28,7 +28,7 @@ const createItem = async (req, res) => {
 
 const getItems = async (req, res) => {
   const items = await Item.find().exec();
-  res.send(items);
+  res.json(items);
 }
 
 exports.createItem = createItem;
