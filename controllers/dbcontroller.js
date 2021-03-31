@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Item = require("./models/item");
+const Item = require("../models/item");
 const url =
   "mongodb+srv://hev:hevpassword@cluster0.iszw0.mongodb.net/hevdb?retryWrites=true&w=majority";
 
@@ -28,7 +28,7 @@ const createItem = async (req, res) => {
 
 const getItems = async (req, res) => {
   const items = await Item.find().exec();
-  res.send(items);
+  res.json(items);
 }
 
 exports.createItem = createItem;
