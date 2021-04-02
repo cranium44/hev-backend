@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
+const schema = require('./itemSchema');
 
 const OrderSchema = new mongoose.Schema({
   clientName: {type:String, required: true},
   receiptId: Number,
   address: {type:String, required: true},
   delivered: Boolean,
-  itemIds: [Number],
+  items: [schema.itemSchema],
   date: {type: Date, default: Date.now}
 })
 
