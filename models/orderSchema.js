@@ -6,7 +6,7 @@ const OrderSchema = new mongoose.Schema({
   receiptId: Number,
   address: {type:String, required: true},
   delivered: Boolean,
-  items: [schema.itemSchema],
+  items: [Number],
   date: {type: Date, default: Date.now}
 })
 
