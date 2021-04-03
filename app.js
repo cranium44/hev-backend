@@ -1,6 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const itemRoute = require("./routes/products");
+const HttpError = require('./models/httpError')
+const itemRoute = require("./routes/productsRoutes");
+const ordersRoute = require("./routes/ordersRoutes");
+const categoriesRoute = require("./routes/categoryRoute");
 
 const app = express();
 app.use(bodyParser.json());
@@ -37,6 +40,8 @@ app.post("/test", (req, res) => {
 });
 
 app.use("/api/items", itemRoute);
+app.use("/api/order", ordersRoute);
+app.use("/api/category", categoriesRoute)
 
 app.use((req, res, next) => {
     throw new HttpError("This route is not supported.", 404);
