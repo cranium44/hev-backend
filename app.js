@@ -1,9 +1,22 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 const HttpError = require('./models/httpError')
 const itemRoute = require("./routes/productsRoutes");
 const ordersRoute = require("./routes/ordersRoutes");
 const categoriesRoute = require("./routes/categoryRoute");
+
+const url =
+    "mongodb+srv://hev:hevpassword@cluster0.iszw0.mongodb.net/hevdb?retryWrites=true&w=majority";
+mongoose.set("returnOriginal", false);
+mongoose
+    .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("connected");
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
 const app = express();
 app.use(bodyParser.json());
