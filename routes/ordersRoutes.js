@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Order = require('../models/orderSchema')
+const controller = require('../controllers/ordersController')
 
-router.get('/all', (req, res) => {
-    
-});
+router.get('/', controller.getOrders);
 
-router.get('/:id', (req, res) => {
+router.post('/', controller.createOrder);
 
-});
+router.get('/:id', controller.updateOrder)
 
 module.exports = router

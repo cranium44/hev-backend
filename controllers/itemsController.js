@@ -3,7 +3,7 @@ const uuid = require("uuid");
 const Item = require("../models/itemSchema");
 const url =
     "mongodb+srv://hev:hevpassword@cluster0.iszw0.mongodb.net/hevdb?retryWrites=true&w=majority";
-
+mongoose.set("returnOriginal", false);
 mongoose
     .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
