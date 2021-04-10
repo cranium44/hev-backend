@@ -13,6 +13,11 @@ const createItem = async (req, res) => {
     res.json(result);
 };
 
+const getOneItem = async (req, res) => {
+    const item = await Item.findOne({id: req.params.id}).exec();
+    res.json(item)
+}
+
 const getItems = async (req, res) => {
     const items = await Item.find().exec();
     res.json(items);
@@ -41,3 +46,4 @@ exports.createItem = createItem;
 exports.getItems = getItems;
 exports.deleteItem = deleteItem;
 exports.updateItem = updateItem;
+exports.getOneItem = getOneItem;
