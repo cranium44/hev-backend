@@ -6,8 +6,10 @@ router.get('/', controller.getOrders);
 
 router.post('/', controller.createOrder);
 
-router.get('/:id', controller.updateOrder);
+router.post('/:id', controller.updateOrder);
 
-router.get('/delivered/:id', controller.deliveredOrder)
+router.post('/delivered/:id', controller.deliveredOrder)
+
+router.delete('/:id', controller.deleteOrder);
 
 module.exports = router

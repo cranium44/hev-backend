@@ -42,7 +42,13 @@ const deliveredOrder = async (req, res) => {
     res.json(result);
 };
 
+const deleteOrder = async (req, res) => {
+    const result = await Order.findOneAndDelete({receiptId: req.params.id}).exec()
+    res.json(result)
+}
+
 exports.createOrder = createOrder;
 exports.getOrders = getOrders;
 exports.updateOrder = updateOrder;
 exports.deliveredOrder = deliveredOrder;
+exports.deleteOrder = deleteOrder;
