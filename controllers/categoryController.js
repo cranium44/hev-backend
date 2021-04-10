@@ -33,7 +33,13 @@ const updateCategory = async (req, res) => {
     res.json(result)
 };
 
+const deleteCategory = async (req, res) => {
+    const result = await Category.findOneAndDelete({id: req.params.id}).exec();
+    res.json(result)
+}
+
 exports.addCategory = addCategory;
 exports.getAllCategories = getAllCategories;
 exports.getOneCategory = getOneCategory;
 exports.updateCategory = updateCategory;
+exports.deleteCategory = deleteCategory;
