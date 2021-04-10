@@ -2,7 +2,6 @@ const express = require("express");
 const uuid = require("uuid");
 const Item = require("../models/itemSchema");
 
-
 const createItem = async (req, res) => {
     const createdItem = new Item({
         name: req.body.name,
@@ -19,5 +18,26 @@ const getItems = async (req, res) => {
     res.json(items);
 };
 
+const updateItem = async (req, res) => {
+    const result = await Item.findOneAndUpdate(
+        { id: req.params.id },
+        {
+            id: req.params.id,
+            name: req.body.name,
+            categoryId: req.body.categoryId,
+            description: req.body.description,
+            imageUrl: req.body.imageUrl,
+        }
+    ).exec();
+    res.json(result)
+};
+
+const deleteItem = async (req, res, next) => {
+    const result = await Item.findOneAndDelete({id: req.params.id}).exec()
+    res.json(result)
+}
+
 exports.createItem = createItem;
 exports.getItems = getItems;
+exports.deleteItem = deleteItem;
+exports.updateItem = updateItem;

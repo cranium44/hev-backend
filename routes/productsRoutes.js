@@ -4,7 +4,9 @@ const { check } = require("express-validator");
 const router = express.Router();
 const controller = require("../controllers/itemsController");
 
-router.post("/new", controller.createItem);
-router.get("/all", controller.getItems);
+router.post("/", controller.createItem);
+router.get("/", controller.getItems);
+router.delete("/:id", controller.deleteItem )
+router.post("/:id", controller.updateItem)
 
 module.exports = router;
