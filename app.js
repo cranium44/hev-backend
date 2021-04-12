@@ -19,14 +19,10 @@ mongoose
         console.log(err);
     });
 
-const corsOptions = {
-    origin: "*",
-    optionsSuccessStatus: 200,
-};
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors(corsOptions));
+app.use(cors());
 
 const port = process.env.PORT || 5000;
 
