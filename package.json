@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/cranium44/hev-backend#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.10.0",
     "mongodb": "^3.6.4",
