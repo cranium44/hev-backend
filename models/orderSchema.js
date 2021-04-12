@@ -7,6 +7,7 @@ const OrderSchema = new mongoose.Schema({
   address: {type:String, required: true},
   delivered: Boolean,
   items: [Number],
+  price: {type: Number},
   date: {type: Date, default: Date.now}
 })
 
