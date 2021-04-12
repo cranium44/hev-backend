@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const HttpError = require('./models/httpError')
 const itemRoute = require("./routes/productsRoutes");
 const ordersRoute = require("./routes/ordersRoutes");
@@ -20,6 +21,7 @@ mongoose
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors())
 
 const port = process.env.PORT || 5000;
 
