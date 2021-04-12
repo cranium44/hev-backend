@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const HttpError = require('./models/httpError')
+const HttpError = require("./models/httpError");
 const itemRoute = require("./routes/productsRoutes");
 const ordersRoute = require("./routes/ordersRoutes");
 const categoriesRoute = require("./routes/categoryRoute");
@@ -19,9 +19,14 @@ mongoose
         console.log(err);
     });
 
+const corsOptions = {
+    origin: "*",
+    optionsSuccessStatus: 200,
+};
+
 const app = express();
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors(corsOptions));
 
 const port = process.env.PORT || 5000;
 
@@ -56,7 +61,7 @@ app.post("/test", (req, res) => {
 
 app.use("/api/items", itemRoute);
 app.use("/api/order", ordersRoute);
-app.use("/api/category", categoriesRoute)
+app.use("/api/category", categoriesRoute);
 
 app.use((req, res, next) => {
     throw new HttpError("This route is not supported.", 404);
