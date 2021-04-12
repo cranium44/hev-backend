@@ -7,7 +7,7 @@ const createItem = async (req, res) => {
         name: req.body.name,
         categoryId: req.body.categoryId,
         description: req.body.description,
-        id: uuid(),
+        id: Math.floor(100000 + Math.random() * 900000),
     });
     const result = await createdItem.save();
     res.json(result);
