@@ -19,10 +19,17 @@ mongoose
         console.log(err);
     });
 
-
 const app = express();
+const corsOptions = {
+    origin: "*",
+    optionsSuccessStatus: 200,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+};
+
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions))
 
 const port = process.env.PORT || 5000;
 
