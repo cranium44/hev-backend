@@ -29,7 +29,7 @@ const corsOptions = {
 
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions))
+app.options('*', cors())
 
 const port = process.env.PORT || 5000;
 
