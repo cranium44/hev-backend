@@ -1,12 +1,16 @@
 const express = require("express");
 const uuid = require("uuid");
+const {uploadImage} = require("../util/cloudinaryHelpers");
 const Item = require("../models/itemSchema");
 
 const createItem = async (req, res) => {
+    let imgUrl = await uploadImage(req.body.imageData)
+    if(imgUrl.toLowerCase().includes("unable")) return res.status(404).json({error: imgUrl})
     const createdItem = new Item({
         name: req.body.name,
         categoryId: req.body.categoryId,
         description: req.body.description,
+        imageUrl: imgUrl,
         id: Math.floor(100000 + Math.random() * 900000),
     });
     const result = await createdItem.save();

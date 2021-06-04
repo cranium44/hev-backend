@@ -27,35 +27,15 @@ const corsOptions = {
     preflightContinue: false,
 };
 
-app.use(bodyParser.json());
+app.use(express.json({ limit: "50mb" }));
 app.use(cors(corsOptions));
-app.options('*', cors())
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
+// app.options("*", cors());
 
 const port = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
     res.send("Hello backend");
-});
-
-app.get("/test", (req, res) => {
-    res.send([
-        {
-            id: 1,
-            name: "item 1",
-        },
-        {
-            id: 2,
-            name: "item 2",
-        },
-        {
-            id: 3,
-            name: "item 3",
-        },
-        {
-            id: 4,
-            name: "item 4",
-        },
-    ]);
 });
 
 app.post("/test", (req, res) => {

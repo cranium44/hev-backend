@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/cranium44/hev-backend#readme",
   "dependencies": {
+    "cloudinary": "^1.25.2",
     "cloudinary-core": "^2.11.4",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
